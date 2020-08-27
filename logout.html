@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="A1 Uniform" />
+
+    <meta name="author" content="g3LPNT" />
+
+    <title>A1 Uniform</title>
+    <!-- Mobile Specific Meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+    <!-- Themefisher Icon font -->
+    <link rel="stylesheet" href="plugins/themefisher-font/style.css" />
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" />
+    <!-- font awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css" />
+    <!-- navbar mobile -->
+    <link rel="stylesheet" href="plugins/multi-level-dropdown-vegas-nav/dist/css/vgnav.css" />
+    <link rel="stylesheet" href="plugins/multi-level-dropdown-vegas-nav/dist/css/vgnav-theme.css" />
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animate.min.css">
+</head>
+
+<body id="body">
+
+<div class="modal product-modal fade" id="alertModal" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog animate__animated animate__backInDown " role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="block text-center">
+                        <i class="tf-ion-android-checkmark-circle" style="color: seagreen;font-size: 50px"></i>
+                        <h2 class="text-center">Logged</h2>
+                        <a href="index.html" class="btn btn-solid-border mt-20 timeCount">Shop now ( 5 )</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+Essential Scripts
+=====================================-->
+<!-- Main jQuery -->
+<script src="plugins/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.1 -->
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- Validation plugin -->
+<script src="plugins/jquery-validation/jquery.validate.min.js"></script>
+<!-- Main Js File -->
+<script src="js/script.js"></script>
+<script>
+    let countTime = 5;
+    function timeCount() {
+        countTime--;
+        $('.timeCount').html('Shop Now ( ' + countTime + ' )');
+        if (countTime === 0) {
+            window.location.href = 'login.html';
+        }
+    }
+    $(document).ready(function () {
+       if(sessionStorage.getItem('logged')){
+           sessionStorage.removeItem('logged');
+           $('#alertModal').modal('show');
+           setTimeout(timeCount,1000);
+       }
+       else {
+           window.location.href='login.html'
+       }
+    })
+</script>
+</body>
+</html>
